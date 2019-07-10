@@ -1,4 +1,4 @@
-rom page_content import *
+from page_content import *
 from google.protobuf import json_format
 from hdfs.client import Client
 import redis
