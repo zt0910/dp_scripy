@@ -1,0 +1,80 @@
+syntax = "proto3";
+
+// 点评商家
+message DianpingMerchant {
+  // 商家名称
+  string name = 1;
+  // 商家ID
+  string shop_id = 2;
+  // 所在城市ID
+  string city_id = 3;
+  // 所属类别
+  string category = 4;
+  // 商家展示图片总数
+  string pic_count = 5;
+  // 商家评分
+  MerchantScores scores = 6;
+  // 用户评论数量
+  int32 comment_count = 7;
+  // 人均价格
+  int32 avg_price = 8;
+  // 门店地址
+  string address = 9;
+  // 联系电话
+  string phone_number = 10;
+  // 排行榜信息
+  repeated Ranking rankings = 11;
+  // 优惠券
+  repeated DianpingCoupon coupons = 12;
+  // 推荐菜
+  repeated RecommendedDish recommended_dishes = 13;
+  // 营业时间
+  string open_hours = 14;
+}
+
+// 餐饮排行榜
+message Ranking {
+  // 排行榜名称
+  string name = 1;
+  // 排名位置
+  int32 ranking = 2;
+}
+
+// 商户评分
+message MerchantScores {
+  // 总评分(1~5颗星，允许半颗星)
+  float overall = 1;
+  // 口味
+  float taste = 2;
+  // 环境
+  float environment = 3;
+  // 服务
+  float service = 4;
+}
+
+// 点评平台上的优惠券类型
+enum DianpingCouponType {
+  // 代金券，一般可用于通用菜品消费
+  CASH = 0;
+  // 套餐优惠券，一般为指定菜品或菜品列表
+  COMBO = 1;
+}
+
+message DianpingCoupon {
+  // 优惠券类型
+  DianpingCouponType type = 1;
+  // 代金券或套餐原价值
+  int32 original_price = 2;
+  // 代金券或套餐打折后价值
+  int32 discount_price = 3;
+  // 已售数量
+  int32 sales_count = 4;
+}
+
+// 推荐菜
+message RecommendedDish {
+  // 菜品名称
+  string dish_name = 1;
+  // 推荐人数
+  int32 recommender_count = 2;
+}
